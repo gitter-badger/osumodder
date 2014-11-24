@@ -1,0 +1,21 @@
+User visits webpage:
+	Load HTML Document
+	Load CSS Styles
+	Load Required JavaScript Libraries
+	Load JavaScript App
+
+----------------------------------------------------------
+	JavaScript Application
+----------------------------------------------------------
+
+Check for an existing modding session:
+	If there are modding sessions, load them.
+	If not, ask the user to create a new modding session.
+
+
+
+
+
+
+
+

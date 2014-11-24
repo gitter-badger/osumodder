@@ -1,0 +1,27 @@
+1 Main JSON Object, inside it:
+	- Example Modding Session
+		- Modding Section
+			- A mod
+			- A mod
+		- Another Modding Section
+			- A mod
+			- A mod
+			- A mod
+	- Another Modding Session
+		- Modding Section
+			- Another mod
+			- Another mod
+			- Another mod
+		- Modding Section
+			- Another mod
+
+Example Format:
+[ // Array of Modding Sessions
+	{ // Modding Session Entity
+		"mods": [ // Mods for the current session
+			"02:25:943 (4) - Remove the new Combo Here.",
+			"02:43:932 (2) - This part felt a bit odd to me."
+		]
+	}
+]
+
