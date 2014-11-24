@@ -1,0 +1,271 @@
+/*
+Copyright (C) 2014 Donovan Glover
+http://dglover.co/
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+@wrapper: 1280px;
+@font: "Quattrocento","Helvetica Neue",Helvetica,Arial,sans-serif;
+@fontSize: 1.05em;
+@background: url(background.jpg);
+@wrapperColor: rgba(0, 0, 0, 0.3);
+@textColor: #eee;
+@linkColor: #52B3D9;
+@linkColorHover: #E26A6A;
+
+
+.linkStyle {
+	text-decoration: none;
+	color: @linkColor;
+}
+.linkStyleHover {
+	color: @linkColorHover;
+}
+.animate {
+	transition:all 0.4s ease-in-out;
+		-webkit-transition:all 0.4s ease-in-out;
+		-moz-transition:all 0.4s ease-in-out;
+		-ms-transition:all 0.4s ease-in-out;
+		-o-transition:all 0.4s ease-in-out;
+}
+.centerText {
+	text-align: center;
+}
+
+.shadow {
+	text-shadow: 1.25px 1.25px 1.25px black;
+}
+
+.outline {
+	outline-color: rgb(77, 144, 254); // Force all browsers to Chrome outline color
+}
+
+::-moz-selection{background:rgba(210, 82, 127, 0.5);color:#1BA39C;.shadow;}
+::selection{background:rgba(210, 82, 127, 0.5);color:#1BA39C;.shadow;}
+
+html {
+	font-family: @font;
+	color: @textColor;
+	font-size: @fontSize;
+	.shadow;
+	background: @background no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+}
+
+a {
+	.linkStyle;
+	.animate;
+}
+
+a:visited {
+	.linkStyle;
+}
+
+a:hover {
+	.linkStyleHover;
+}
+
+hr {
+	border-color: rgba(155,155,155,0.2);
+}
+
+#innerWrapper {
+	margin: 0 auto;
+	width: 100%;
+	padding: 0 1.5em;
+	max-width: @wrapper;
+	background: @wrapperColor;
+	border-radius: 0.2em;
+}
+
+header {
+	.centerText;
+	h2 {
+		line-height: 0.5em;
+	}
+}
+
+main {
+
+	margin: auto 2em;
+
+	.tech_details {
+		color: #aaa;
+	}
+
+	nav {
+		ul {
+			list-style: none;
+		}
+		li {
+			float:left;
+			margin: 0.2em 0.675em;
+		}
+	}
+
+	input[type=text] {
+		.animate;
+		.outline;
+		height:1.9em;
+		padding-left: 0.3em;
+		margin-left: 0.2em;
+		margin-right: 0.2em;
+		background:#eee;
+		border:none;
+		border-radius:0.2em;
+		.animate;
+		&:focus {
+			background:#333;
+			color: white;
+		}
+		&#mSection {
+			min-width: 200px;
+		}
+		&#mMod {
+			min-width: 600px;
+		}
+	}
+
+	#codeResults {
+		padding-top: 1em;
+	}
+
+	textarea {
+		.animate;
+		resize: none;
+		min-width: 90%;
+		margin-left:5%;
+		margin-right:5%;
+		background: rgba(0,0,0,0.1);
+		color: white;
+		border-color: rgba(155,155,155,0.45);
+		padding: 0.3em 0.6em;
+		height: 150px;
+		overflow: hidden;
+		outline:none!important;
+		.shadow;
+		&:active {
+			outline:none!important;
+			border-color: rgba(155,155,155,0.45);
+		}
+		&:hover {
+			outline:none!important;
+			border-color: rgba(155,155,155,0.45);
+		}
+		&:focus {
+			outline:none!important;
+			border-color: rgba(225,225,225,0.5);
+		}
+	}
+
+	button {
+		.animate;
+		text-decoration: none;
+		border-color: none;
+		border-style: none;
+		border-radius: 0.4em;
+		padding-left: 1em;
+		padding-right: 1em;
+		outline:none;
+		&:hover {
+			-moz-box-shadow: inset rgb(226, 106, 106) 0 -1px 8px 3.5px;
+			-webkit-box-shadow: inset rgb(226, 106, 106) 0 -1px 8px 3.5px;
+			box-shadow: inset rgb(226, 106, 106) 0 -1px 8px 3.5px;
+			outline:none;
+		}
+	}
+
+	.list_panel {
+		&.active {
+			a {
+				color:#DB0A5B;
+			}
+		}
+	}
+
+}
+
+footer {
+	padding-bottom: 0.2em;
+}
+
+.ng-enter, .ng-move,{
+	-webkit-animation: fadeIn 1s;
+	-moz-animation: fadeIn 1s;
+	-o-animation: fadeIn 1s;
+	animation: fadeIn 1s;
+}
+
+.ng-leave{
+	-webkit-animation: fadeOut 1s;
+	-moz-animation: fadeOut 1s;
+	-o-animation: fadeOut 1s;
+	animation: fadeOut 1s;
+}
+
+.mediaMargins {
+	margin-left: 5%!important;
+	margin-right: 5%!important;
+}
+
+@media handheld, only screen and (max-width: 768px), only screen and (max-device-width: 768px) and (orientation:portrait){
+	input[type="text"] {
+		&#mSection {
+			min-width: 80%!important;
+		}
+		&#mMod {
+			min-width: 80%!important;
+		}
+	}
+}
+
+@media handheld, only screen and (max-width: 479px), only screen and (max-device-width: 479px) and (orientation:portrait){
+	input,button {
+		display:block;
+		clear:both;
+		margin-top:0.4em;
+		margin-bottom:0.4em;
+	}
+	input[type="text"] {
+		&#mSection {
+			min-width: 90%!important;
+		}
+		&#mMod {
+			min-width: 90%!important;
+		}
+	}
+	button {
+		min-width: 90%!important;
+	}
+	label,input[type="text"],button {
+		.mediaMargins
+	}
+}
+
+@media handheld, only screen and (max-width: @wrapper), only screen and (max-device-width: @wrapper) and (orientation:portrait){
+	label {
+		display:block;
+		clear:both;
+	}
+}

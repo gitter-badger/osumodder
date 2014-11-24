@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="modder" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>osu!modder by Railgun</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="keywords" content="osu, osu game, osu modding, osu modder, moddding for osu">
+		<meta name="description" content="Mod the right way. An AngularJS project by Project Railgun.">
+		<link rel="stylesheet" href="assets/base.css">
+		<link rel="stylesheet" href="assets/animate.min.css">
+		<link rel="stylesheet/less" href="assets/design.less">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Quattrocento">
+	</head>
+	<body ng-controller="MainController as main">
+		<div id="outerWrapper">
+			<div id="innerWrapper" ng-controller="AnimateController" class="animated slideInDown">
+
+
+				<header>
+					<h1>osu!modder by Railgun</h1>
+					<h2>A better way to mod.</h2>
+				</header>
+				<div class="clearfix"></div>
+
+
+				<hr>
+				<main ng-controller="ModderController as modder">
+
+
+					<div id="setMap">
+
+						<form name="addSection" ng-submit="modder.givenSection.length > 0 &amp;&amp; modder.addSection(modder.givenSection)" novalidate>
+							<label for="mSection">Add Section:</label>
+							<input autocomplete="off" autofocus="true" type="text" ng-model="modder.givenSection" id="mSection" placeholder="Easy / Normal / etc." required>
+							<button type="submit">Add</button>
+							<div class="tech_details" ng-show="main.developerMode">{{(modder.givenSection.length > 0 &amp;&amp; modder.givenSection) || "No givenSection is currently available. Type something!"}} -&gt; Current Array: {{modder.sections}}</div>
+						</form>
+
+
+					</div>
+
+
+					<div id="panelMain">
+						<div ng-controller="PanelController as panel">
+
+
+							<nav>
+								<ul>
+									<li ng-repeat="section in modder.sections" class="list_panel" ng-class="{ active : panel.isSelected(section.name)}">
+										<a href="" ng-click="panel.selectTab(section.name)">{{section.name}}</a>
+										<span>{{modder.numberOfMods(section)}}</span>
+										<span><a href="" ng-click="modder.removeSection(section.name)">&circlearrowleft;</a></span>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</nav>
+
+
+							<div class="panel" ng-repeat="section in modder.sections" ng-show="panel.isSelected(section.name)">
+
+								<form name="addMod" ng-submit="modder.givenMod.length > 0 &amp;&amp; modder.addMod(section, modder.givenMod)" novalidate>
+									<label for="mMod">Add Mod for {{section.name}}:</label>
+									<input autocomplete="off" spellcheck="true" type="text" id="mMod" ng-model="modder.givenMod" placeholder="02:35:192 - I think it's better if... See below: https://osu.ppy.sh/ss/935791" required>
+									<button type="submit">Add</button>
+								</form>
+
+								<ul>
+									<li ng-repeat="mod in section.mods">{{mod}} <span><a href="" ng-click="modder.removeMod(section, mod)">&circlearrowleft;</a></span></li>
+								</ul>
+
+							</div>
+
+						</div>
+					</div>
+
+					<div id="codeResults">
+
+
+						<form name="code">
+
+							<textarea readonly="true" onclick="this.select()" placeholder="This will be replaced with your post code.">{{main.build(modder.sections)}}</textarea>
+
+						</form>
+
+					</div>
+
+
+				</main>
+				<hr>
+
+
+				<footer>
+					<p class="centerText"><a href="https://osu.ppy.sh/u/2620107">Project Railgun</a> &copy; 2014 | Built with <a href="https://angularjs.org/">AngularJS</a>, <a href="http://sugarjs.com/">SugarJS</a>, and <a href="http://lesscss.org/">LessJS</a>.</p>
+				</footer>
+
+			</div>
+		</div>
+
+		<script src="assets/angular.min.js"></script>
+		<script src="assets/angular-animate.min.js"></script>
+		<script src="assets/sugar.min.js"></script>
+		<script src="assets/less.min.js"></script>
+		<script src="assets/app.js"></script>
+	</body>
+</html>
+
+
